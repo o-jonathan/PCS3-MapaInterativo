@@ -1,11 +1,12 @@
 # PCS3 ― Mapa Interativo
 
-### Tasks:
-- Define tasks
+### Tarefas:
+- Definir tarefas
 
-### Changes:
-- (J) Set map
-- (J) Set map bounds
+### Mudanças:
+- (J) Criado o mapa
+- (J) Definido margens do mapa
+- (J) Criado sistema de marcadores simples
 
 ### Cool Cat:
 ![cool cat](https://tenor.com/pt-BR/view/spinning-cat-gif-9797848010913001046.gif)

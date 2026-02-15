@@ -5,41 +5,64 @@ const borders = [
     [-28.23871479265864, -52.35736670056089]
 ];
 
-const bounds = [
-  [-28.238658151838685, -52.36069527166253],
-  [-28.238265807362975, -52.357117601767484],
-  [-28.241995385066193, -52.36037344228666],
-  [-28.24176376743475, -52.35650076213039]
-]
-
 const center = borders.reduce(
-  (acc, [lat, lng]) => [acc[0] + lat, acc[1] + lng],
-  [0, 0]
+    (acc, [lat, lng]) => [acc[0] + lat, acc[1] + lng],
+    [0, 0]
 ).map(v => v / borders.length);
 
 var map = L.map('map', {
-  boxZoom: false,
+    boxZoom: false,
 
-  center: center,
-  maxBounds: borders,
-  maxBoundsViscosity: 0.9,
+    center: center,
+    maxBounds: borders,
+    maxBoundsViscosity: 0.9,
 
-  zoom: 18
+    zoom: 18
 });
 
 L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.{ext}', {
-	minZoom: 18,
-	maxZoom: 21,
-	attribution: '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-	ext: 'jpg'
+    minZoom: 18,
+    maxZoom: 21,
+    attribution: '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    ext: 'jpg'
 }).addTo(map);
+
+async function loadMarkers() {
+    try {
+        const response = await fetch('./markers.json');
+        const data = await response.json();
+        data.forEach(el => {
+            switch (el.type) {
+                case 'marker':
+                    L.marker(el.location)
+                    .bindPopup(`${el.name}<hr>${el.description}`)
+                    .addTo(map);
+                    break;
+
+                case 'area':
+                    L.polygon(el.locations)
+                    .bindPopup(`${el.name}<hr>${el.description}`)
+                    .addTo(map);
+                    break;
+            
+                default:
+                    break;
+            }
+        });
+    }
+    catch (error) {
+        console.error('Falha ao carregar marcadores!\n', error);
+    }
+}
+
+loadMarkers();
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 map.on('click', function (e) {
-  if (e.originalEvent.shiftKey) {
-    const { lat, lng } = e.latlng;
-    const text = lat + ', ' + lng;
-    navigator.clipboard.writeText(text);
-  }
+    if (e.originalEvent.shiftKey) {
+        const { lat, lng } = e.latlng;
+        const text = lat + ', ' + lng;
+        navigator.clipboard.writeText(text);
+    }
 })
