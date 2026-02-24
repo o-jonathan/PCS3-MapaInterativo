@@ -1,13 +1,58 @@
 [
     {
         "type": "marker",
-        "name": "Bus Stop",
+        "name": "Parada de Ônibus",
         "location": [-28.240402499394843, -52.35713984970588],
-        "description": "Ipsum Lorem Sit Amet"
+        "description": "Lorem Ipsum"
+    },
+    {
+        "type": "marker",
+        "name": "Lago",
+        "location": [-28.240089731280584, -52.35805034637451]
+    },
+    {
+        "type": "marker",
+        "name": "Quadra de Esportes",
+        "location": [-28.23949206385564, -52.359511479735374]
+    },
+    {
+        "type": "marker",
+        "name": "Prédio 1",
+        "location": [-28.240874940962733, -52.35750250518322]
+    },
+    {
+        "type": "marker",
+        "name": "Prédio 2",
+        "location": [-28.241194393292368, -52.35814288258554]
+    },
+    {
+        "type": "marker",
+        "name": "Prédio 3",
+        "location": [-28.240773866995468, -52.35813349485397]
+    },
+    {
+        "type": "marker",
+        "name": "Prédio 4",
+        "location": [-28.24029654889187, -52.35752865672113]
+    },
+    {
+        "type": "marker",
+        "name": "Prédio 5",
+        "location": [-28.24114715141512, -52.3585706949234]
+    },
+    {
+        "type": "marker",
+        "name": "Prédio 6",
+        "location": [-28.239969329767547, -52.357401251792915]
+    },
+    {
+        "type": "marker",
+        "name": "Prédio 7",
+        "location": [-28.2407013025467, -52.35858879983425]
     },
     {
         "type": "area",
-        "name": "Middle School",
+        "name": "Salas Modulares",
         "locations": [
             [-28.241086156086247, -52.357634849840665],
             [-28.24084500809494, -52.35763610329843],
@@ -15,6 +60,6 @@
             [-28.240932411805364, -52.35790423274696],
             [-28.241093699490495, -52.35785932704041]
         ],
-        "description": "Ipsum Lorem Sit Amet"
+        "description": "Lorem Ipsum"
     }
 ]
