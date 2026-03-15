@@ -16,9 +16,24 @@
         "location": [-28.23949206385564, -52.359511479735374]
     },
     {
-        "type": "marker",
+        "type": "group",
         "name": "Prédio 1",
         "location": [-28.240874940962733, -52.35750250518322]
+    },
+    {
+        "type": "marker",
+        "name": "Gabinete",
+        "location": [-28.24073750643261, -52.35751946581847]
+    },
+    {
+        "type": "marker",
+        "name": "Secretaria",
+        "location": [-28.24085690553696, -52.357385370393956]
+    },
+    {
+        "type": "marker",
+        "name": "Assistência Estudantil",
+        "location": [-28.24089932447089, -52.35760921255393]
     },
     {
         "type": "marker",
@@ -34,6 +49,11 @@
         "type": "marker",
         "name": "Prédio 4",
         "location": [-28.24029654889187, -52.35752865672113]
+    },
+    {
+        "type": "marker",
+        "name": "Biblioteca",
+        "location": [-28.240377726783425, -52.357614548035286]
     },
     {
         "type": "marker",

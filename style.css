@@ -3,3 +3,37 @@
     width: 90dvw;
     cursor: crosshair;
 }
+
+.room {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 100dvw;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(24px);
+    z-index: 1000;
+
+    button {
+        position: absolute;
+        border: 1px solid black;
+        border-radius: 16px;
+        font-size: 2rem;
+        width: 5rem;
+        height: 3rem;
+        cursor: pointer;
+    }
+
+    img {
+        width: 100dvw;
+    }
+}
+
+.r-marker {
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    background-color: red;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}

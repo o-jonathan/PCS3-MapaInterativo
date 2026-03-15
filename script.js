@@ -35,16 +35,16 @@ async function loadMarkers() {
             switch (el.type) {
                 case 'marker':
                     L.marker(el.location)
-                    .bindPopup(`${el.name}<hr>${el.description}`)
-                    .addTo(map);
+                        .bindTooltip(el.name)
+                        .on('click', () => openDoors(el))
+                        .addTo(map);
                     break;
 
                 case 'area':
                     L.polygon(el.locations)
-                    .bindPopup(`${el.name}<hr>${el.description}`)
-                    .addTo(map);
+                        .addTo(map);
                     break;
-            
+
                 default:
                     break;
             }
@@ -66,3 +66,47 @@ map.on('click', function (e) {
         navigator.clipboard.writeText(text);
     }
 })
+
+function openDoors(el) {
+    map.once('moveend', async () => {
+        const div = document.createElement('div');
+        div.id = el.name;
+        div.classList.add('room')
+
+        const clsbtn = document.createElement('button');
+        clsbtn.textContent = '<';
+        clsbtn.addEventListener('click', () => {
+            document.getElementById(el.name).remove();
+            map.flyTo(center, 18);
+        })
+
+        const bg = document.createElement('img');
+        bg.src = './assets/' + el.name + '.jpeg';
+        bg.onerror = () => {
+            bg.onerror = null;
+            bg.src = './assets/recep.jpeg';
+        }
+
+        try {
+            const response = await fetch('./assets/' + el.name + '.json');
+            const data = await response.json();
+            data.forEach(mkr => {
+                const mkrDiv = document.createElement('div');
+                mkrDiv.id = mkr.name;
+                mkrDiv.classList.add('r-marker')
+                mkrDiv.style.top = mkr.location[0];
+                mkrDiv.style.left = mkr.location[1];
+                div.append(mkrDiv);
+            });
+        }
+        catch (error) {
+            console.log(error);
+        }
+
+        div.append(clsbtn);
+        div.append(bg);
+        document.body.appendChild(div);
+    })
+
+    map.flyTo(el.location, 22)
+}
