@@ -1,77 +1,85 @@
 [
     {
         "type": "marker",
+        "id": "onibus",
         "name": "Parada de Ônibus",
-        "location": [-28.240402499394843, -52.35713984970588],
-        "description": "Lorem Ipsum"
-    },
-    {
-        "type": "marker",
-        "name": "Lago",
-        "location": [-28.240089731280584, -52.35805034637451]
-    },
-    {
-        "type": "marker",
-        "name": "Quadra de Esportes",
-        "location": [-28.23949206385564, -52.359511479735374]
+        "location": [-28.240402499394843, -52.35713984970588]
     },
     {
         "type": "group",
+        "id": "p1",
         "name": "Prédio 1",
         "location": [-28.240874940962733, -52.35750250518322]
     },
     {
         "type": "marker",
+        "id": "gabinete",
         "name": "Gabinete",
         "location": [-28.24073750643261, -52.35751946581847]
     },
     {
         "type": "marker",
+        "id": "secretaria",
         "name": "Secretaria",
         "location": [-28.24085690553696, -52.357385370393956]
     },
     {
         "type": "marker",
+        "id": "assistencia",
         "name": "Assistência Estudantil",
         "location": [-28.24089932447089, -52.35760921255393]
     },
     {
         "type": "marker",
+        "id": "p2",
         "name": "Prédio 2",
         "location": [-28.241194393292368, -52.35814288258554]
     },
     {
         "type": "marker",
+        "id": "p3",
         "name": "Prédio 3",
         "location": [-28.240773866995468, -52.35813349485397]
     },
     {
-        "type": "marker",
+        "type": "group",
+        "id": "p4",
         "name": "Prédio 4",
         "location": [-28.24029654889187, -52.35752865672113]
     },
     {
         "type": "marker",
+        "id": "cantina",
+        "name": "Cantina",
+        "location": [-28.240221693045722, -52.357615828514106]
+    },
+    {
+        "type": "marker",
+        "id": "biblioteca",
         "name": "Biblioteca",
         "location": [-28.240377726783425, -52.357614548035286]
     },
     {
         "type": "marker",
+        "id": "p5",
         "name": "Prédio 5",
         "location": [-28.24114715141512, -52.3585706949234]
     },
     {
         "type": "marker",
+        "id": "p6",
         "name": "Prédio 6",
         "location": [-28.239969329767547, -52.357401251792915]
     },
     {
         "type": "marker",
+        "id": "p7",
         "name": "Prédio 7",
         "location": [-28.2407013025467, -52.35858879983425]
     },
     {
         "type": "area",
+        "id": "ensmedio",
         "name": "Salas Modulares",
         "locations": [
             [-28.241086156086247, -52.357634849840665],
@@ -79,7 +87,6 @@
             [-28.240836667164242, -52.35779961507376],
             [-28.240932411805364, -52.35790423274696],
             [-28.241093699490495, -52.35785932704041]
-        ],
-        "description": "Lorem Ipsum"
+        ]
     }
 ]

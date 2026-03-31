@@ -1,0 +1,8 @@
+[
+    {
+        "name": "teste",
+        "location": ["25%", "50%"],
+        "description": "Lorem Ipsum<br><a href='https://www.example.com'>example link</a>",
+        "image": "../assets/icons/p5.svg"
+    }
+]

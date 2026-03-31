@@ -1,7 +1,12 @@
+body {
+    margin: 0;
+}
+
 #map {
-    height: 90dvh;
-    width: 90dvw;
+    height: 100dvh;
+    width: 100dvw;
     cursor: crosshair;
+    background-color: #284d2a;
 }
 
 .room {
@@ -13,20 +18,21 @@
     background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(24px);
     z-index: 1000;
+}
 
-    button {
-        position: absolute;
-        border: 1px solid black;
-        border-radius: 16px;
-        font-size: 2rem;
-        width: 5rem;
-        height: 3rem;
-        cursor: pointer;
-    }
+.room-back {
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 16px;
+    font-size: 2rem;
+    width: 5rem;
+    height: 3rem;
+    cursor: pointer;
+}
 
-    img {
-        width: 100dvw;
-    }
+.room-bg {
+    min-height: 100dvh;
+    min-width: 100dvw;
 }
 
 .r-marker {
@@ -36,4 +42,53 @@
     background-color: red;
     border-radius: 50%;
     transform: translate(-50%, -50%);
+}
+
+.leaflet-control-attribution {
+    opacity: 0.25;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.leaflet-control-attribution:hover {
+    opacity: 1;
+}
+
+.r-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.marker-img {
+    width: 90%;
+    height: 90%;
+}
+
+.marker-popup {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: white;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 160px;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.marker-popup h4 {
+    text-align: center;
+}
+
+.r-marker:hover .marker-popup, .marker-popup:hover {
+    opacity: 1;
+    pointer-events: all;
 }

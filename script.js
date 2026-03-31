@@ -29,12 +29,12 @@ L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}
 
 async function loadMarkers() {
     try {
-        const response = await fetch('./markers.json');
+        const response = await fetch('./data/markers.json');
         const data = await response.json();
         data.forEach(el => {
             switch (el.type) {
                 case 'marker':
-                    L.marker(el.location)
+                    L.marker(el.location, { icon: L.icon({ iconUrl: './assets/icons/' + el.id + '.svg', iconSize: [32, 32], iconAnchor: [16, 16], tooltipAnchor: [16, 0] }) })
                         .bindTooltip(el.name)
                         .on('click', () => openDoors(el))
                         .addTo(map);
@@ -70,34 +70,58 @@ map.on('click', function (e) {
 function openDoors(el) {
     map.once('moveend', async () => {
         const div = document.createElement('div');
-        div.id = el.name;
+        div.id = 'room#' + el.id;
         div.classList.add('room')
 
         const clsbtn = document.createElement('button');
+        clsbtn.classList.add('room-back')
         clsbtn.textContent = '<';
         clsbtn.addEventListener('click', () => {
-            document.getElementById(el.name).remove();
+            document.getElementById(`room#${el.id}`).remove();
             map.flyTo(center, 18);
         })
 
         const bg = document.createElement('img');
-        bg.src = './assets/' + el.name + '.jpeg';
+        bg.classList.add('room-bg')
+        bg.src = './assets/rooms/' + el.id + '.jpeg';
         bg.onerror = () => {
             bg.onerror = null;
-            bg.src = './assets/recep.jpeg';
+            bg.src = './assets/rooms/std.jpeg';
         }
 
         try {
-            const response = await fetch('./assets/' + el.name + '.json');
+            const response = await fetch('./data/' + el.id + '.json');
             const data = await response.json();
+
             data.forEach(mkr => {
+
+                // marker container
                 const mkrDiv = document.createElement('div');
-                mkrDiv.id = mkr.name;
-                mkrDiv.classList.add('r-marker')
+                mkrDiv.classList.add('r-marker');
                 mkrDiv.style.top = mkr.location[0];
                 mkrDiv.style.left = mkr.location[1];
-                div.append(mkrDiv);
+
+                // marker image
+                const img = document.createElement('img');
+                img.src = mkr.image;
+                img.classList.add('marker-img');
+
+                // popup container
+                const popup = document.createElement('div');
+                popup.classList.add('marker-popup');
+
+                popup.innerHTML = `
+            <h4>${mkr.name}</h4>
+            <hr>
+            <p>${mkr.description}</p>
+        `;
+
+                // assemble
+                mkrDiv.appendChild(img);
+                mkrDiv.appendChild(popup);
+                div.appendChild(mkrDiv);
             });
+
         }
         catch (error) {
             console.log(error);
