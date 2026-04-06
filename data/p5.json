@@ -4,5 +4,11 @@
         "location": ["25%", "50%"],
         "description": "Lorem Ipsum<br><a href='https://www.example.com'>example link</a>",
         "image": "../assets/icons/p5.svg"
+    },
+    {
+        "name": "teste",
+        "location": ["90%", "90%"],
+        "description": "Lorem Ipsum<br><a href='https://www.example.com'>example link</a>",
+        "image": "../assets/icons/p5.svg"
     }
 ]
