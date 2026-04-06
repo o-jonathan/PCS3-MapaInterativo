@@ -42,6 +42,7 @@ async function loadMarkers() {
 
                 case 'area':
                     L.polygon(el.locations)
+                        .bindTooltip(el.name)
                         .addTo(map);
                     break;
 
@@ -81,13 +82,9 @@ function openDoors(el) {
             map.flyTo(center, 18);
         })
 
-        const bg = document.createElement('img');
+        const bg = document.createElement('div');
         bg.classList.add('room-bg')
-        bg.src = './assets/rooms/' + el.id + '.jpeg';
-        bg.onerror = () => {
-            bg.onerror = null;
-            bg.src = './assets/rooms/std.jpeg';
-        }
+        bg.style.backgroundImage = `url(./assets/rooms/${el.id}.jpeg)`;
 
         try {
             const response = await fetch('./data/' + el.id + '.json');
